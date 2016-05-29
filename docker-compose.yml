@@ -1,0 +1,41 @@
+version: '2'
+services:
+  web:
+    image: osmtw/modtile:v3.0.9
+    ports:
+        - "8080:80"
+    links:
+        - postgis:pg
+    environment:
+        - PG_ENV_POSTGRES_DB=postgres
+        - PG_ENV_POSTGRES_PASSWORD=pa55w0rd
+        - PG_ENV_POSTGRES_USER=postgres
+        - PG_PORT_5432_TCP_ADDR=pg
+        - PG_PORT_5432_TCP_PORT=5432
+    depends_on:
+        - postgis
+  osm2pgsql:
+    image: osmtw/osm2pgsql:0.88.1
+    links:
+        - postgis:pg
+    volumes:
+        - osm:/osm:rw
+    environment:
+        - PG_ENV_POSTGRES_DB=postgres
+        - PG_ENV_POSTGRES_PASSWORD=pa55w0rd
+        - PG_ENV_POSTGRES_USER=postgres
+        - PG_PORT_5432_TCP_ADDR=pg
+        - PG_PORT_5432_TCP_PORT=5432
+    depends_on:
+        - postgis
+  postgis:
+    image: osmtw/postgis
+    environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_DB=postgres
+        - POSTGRES_PASSWORD=pa55w0rd
+    volumes:
+        - osmdb:/var/lib/postgresql/data
+volumes:
+  osmdb:
+  osm:
