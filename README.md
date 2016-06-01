@@ -1,4 +1,4 @@
-# tiles-docker
+# OpenStreetMap Tiles
 
 Docker images incldues the following software stack for OpenStreetMap
 
