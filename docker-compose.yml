@@ -1,7 +1,9 @@
 version: '2'
 services:
   web:
-    image: osmtw/modtile:v3.0.9
+    # uncomment this, if you like to have local build.
+    # build: ./osm-tiles
+    image: osmtw/osm-tiles:latest
     ports:
         - "8080:80"
     links:
