@@ -11,7 +11,7 @@ _ osm2pgsql, Convert OSM planet snapshot data to SQL suitable for loading
     - mod_tile + renderd
     - carto & millstone
 
-# Frontend server
+# Map styles.
 The docker instances will build and servie tile based on the following stylesheets.
 - Mapnik stylesheet http://svn.openstreetmap.org/applications/rendering/mapnik
 - openstreetmap-carto https://github.com/gravitystorm/openstreetmap-carto.git
