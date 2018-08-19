@@ -28,10 +28,13 @@ services:
         - PG_ENV_POSTGRES_USER=postgres
         - PG_PORT_5432_TCP_ADDR=pg
         - PG_PORT_5432_TCP_PORT=5432
+        - REGION=asia/taiwan
+        - DATADIR=/osm
+        - LOOP=600
     depends_on:
         - postgis
   postgis:
-    image: osmtw/postgis
+    image: osmtw/postgis:9.5-2.2
     environment:
         - POSTGRES_USER=postgres
         - POSTGRES_DB=postgres
